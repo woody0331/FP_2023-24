@@ -2,9 +2,11 @@ main :: IO()
 main = do
     print $ dotProduct (1, 2, 3) (7, 4, 1) == 18
     print $ dotProduct (5, 2, 159) (0, -1, -2) == (-320)
+    print $ dotProduct (14, 10, 21) (9, 22, 4) == 430 -- my test
 
     print $ crossProduct (1, 2, 3) (7, 4, 1) == (-10, 20, -10)
     print $ crossProduct (5, 2, 159) (0, -1, -2) == (155, 10, -5)
+    print $ crossProduct (14, 10, 21) (9, 22, 4) == (-422,133,218) --my test
 
     print $ magnitude (1, 2, 3) == 3.7416573867739413
     print $ magnitude (7, 4, 1) == 8.12403840463596
@@ -12,6 +14,7 @@ main = do
     print $ magnitude (5, 2, 159) == 159.0911688309568
     print $ magnitude (0, -1, -2) == 2.23606797749979
     print $ magnitude (155, 10, -5) == 155.40270267920053
+    print $ magnitude (14, 10, 21) == 27.147743920996454 --my test
 
 type Vector a = (a, a, a)
 
@@ -22,4 +25,4 @@ crossProduct :: (Num a) => Vector a -> Vector a -> Vector a
 crossProduct (x1, y1, z1) (x2, y2, z2) = (y1 * z2 - z1 * y2, z1 * x2 - x1 * z2, x1 * y2 - y1 * x2) -- II -> III, III -> I, I -> II
 
 magnitude :: (Floating a) => Vector a -> a
-magnitude (x, y, z) = sqrt (x * x + y * y + z * z)
+magnitude (x, y, z) = sqrt $ x * x + y * y + z * z
