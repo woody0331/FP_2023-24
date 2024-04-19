@@ -18,15 +18,6 @@ data Shape a = Circle a | Rectangle a a | Triangle a a a | Cylinder a a
  deriving (Show, Eq, Read, Ord)
 
 perimeter :: Floating a => Shape a -> a
-perimeter (Circle r) = 2 * pi * r
-perimeter (Rectangle a b) = 2 * (a + b)
-perimeter (Triangle a b c) = a + b + c
-perimeter (Cylinder r h) = 4 * r + 2 * h
+
 
 area :: Floating a => Shape a -> a
-area (Circle r) = pi * r * r
-area (Rectangle a b) = a * b
-area (Cylinder r h) = 2 * pi * r * h + 2 * pi * r * r
-area (Triangle a b c) = sqrt (s * (s - a) * (s - b) * (s - c))
- where 
-     s = (a + b + c) / 2  

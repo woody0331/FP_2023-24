@@ -14,13 +14,5 @@ type Path = [Node]
 
 simplePaths :: Graph -> Int -> Node -> [Path]
 simplePaths graph k n
- | k < 0 = error "length must be a non-negative"
- | notElem n (map fst graph) = error "node not in graph"
- | otherwise = [path | path <- paths n k, length path == (k + 1)]
-  where
-    paths :: Node -> Int -> [Path]
-    paths node 0 = [[node]]
-    paths node steps = [node : rest | neighbour <- nextNeighbour node, rest <- paths neighbour (steps - 1)]
-     where
-        nextNeighbour node = [neighbor | (source, targets) <- graph, source == node, neighbor <- targets]
+
  

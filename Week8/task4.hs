@@ -9,16 +9,9 @@ data Shape a = Circle a | Rectangle a a | Triangle a a a | Cylinder a a
  deriving (Show, Eq, Read, Ord)
 
 area :: Floating a => Shape a -> a
-area (Circle r) = pi * r * r
-area (Rectangle a b) = a * b
-area (Cylinder r h) = 2 * pi * r * h + 2 * pi * r * r
-area (Triangle a b c) = sqrt (s * (s - a) * (s - b) * (s - c))
- where 
-     s = (a + b + c) / 2  
+
 
 getAreas :: Floating a => [Shape a] -> [a]
-getAreas = map area 
---getAreas shapes = map area shapes
+
 
 maxArea :: (Ord a, Floating a) => [Shape a] -> Shape a
-maxArea shapes = foldl1 (\acc x -> if area x > area acc then x else acc) shapes
