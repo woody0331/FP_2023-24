@@ -9,4 +9,7 @@ main = do
 type Node = (Int, Int, Int)
 
 listLeaves :: [Node] -> [Int]
-listLeaves tree 
+listLeaves tree = filter (\x -> notElem x parent) child
+ where
+    parent = map (\(x, _, _) -> x) tree
+    child = concatMap (\(_, y, z) -> [y, z]) tree
